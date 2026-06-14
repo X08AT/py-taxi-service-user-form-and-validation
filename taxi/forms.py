@@ -34,7 +34,7 @@ class DriverCreateForm(UserCreationForm):
 
 class DriverLicenseUpdateForm(forms.ModelForm):
     class Meta:
-        model = Driver
+        model = User
         fields = ("license_number", )
 
     def clean_license_number(self):
@@ -58,7 +58,7 @@ class DriverLicenseUpdateForm(forms.ModelForm):
 
 class CarCreateForm(forms.ModelForm):
     drivers = forms.ModelMultipleChoiceField(
-        queryset=Driver.objects.all(),
+        queryset=User.objects.all(),
         widget=forms.CheckboxSelectMultiple,
         required=False
     )
